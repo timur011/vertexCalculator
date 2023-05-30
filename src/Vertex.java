@@ -50,6 +50,7 @@ public class Vertex {
         }
 
     }
+
     public void present(){
         System.out.println("The vertex of the formula is (" + getX() + ", " + getY() + ")");
     }
