@@ -1,14 +1,11 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Standard form or vertex form?");
+        Standard s1 = new Standard("2x^2-4x-6");
+        System.out.println(s1.getX());
+        System.out.println(s1.getY());
 
-        System.out.println("Enter in an equation please. ");
-        String x = scan.nextLine();
-        Vertex v1 = new Vertex(x);
-        v1.present();
 
 
     }
