@@ -33,16 +33,22 @@ public class Standard {
         double bValue;
         String b = equation.substring(equation.indexOf("^"), equation.lastIndexOf("x"));
         if(b.contains("+")){
-            bValue = Double.parseDouble(b.substring(b.indexOf("+")));
-            secondPart = -1 * bValue * xCoor;
-        }
-        else if(b.contains("-")){
-            bValue = Double.parseDouble(b.substring(b.indexOf("-")));
+            bValue = Double.parseDouble(b.substring(b.indexOf("+") + 1));
             secondPart = bValue * xCoor;
         }
-        thirdPart = Double.parseDouble(equation.substring(equation.lastIndexOf("x") + 2));
+        else if(b.contains("-")){
+            bValue = Double.parseDouble(b.substring(b.indexOf("-") + 1));
+            secondPart = bValue * xCoor;
+            secondPart *= -1;
+        }
 
-        return secondPart + thirdPart + firstPart;
+
+        thirdPart = Double.parseDouble(equation.substring(equation.lastIndexOf("x") + 2));
+        if(equation.substring(equation.lastIndexOf("x")).contains("-")){
+            thirdPart *= -1;
+        }
+
+        return firstPart + secondPart + thirdPart;
 
     }
 }
