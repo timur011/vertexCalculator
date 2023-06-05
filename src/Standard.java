@@ -8,7 +8,12 @@ public class Standard {
         this.equation = equation;
     }
     public double getX(){
-        double a = Double.parseDouble(equation.substring(0, equation.indexOf("x")));
+        double a;
+        if(equation.substring(0, 1).equals("x")){
+            a = 1;
+        }else {
+            a = Double.parseDouble(equation.substring(0, equation.indexOf("x")));
+        }
         int location = equation.indexOf("^");
         int finalLoc = equation.lastIndexOf("x");
         String x = "";
@@ -26,7 +31,12 @@ public class Standard {
     }
     public double getY(){
         double firstPart, secondPart, thirdPart;
-        double a = Double.parseDouble(equation.substring(0, equation.indexOf("x")));
+        double a;
+        if(equation.substring(0, 1).equals("x")){
+            a = 1;
+        }else {
+            a = Double.parseDouble(equation.substring(0, equation.indexOf("x")));
+        }
         secondPart = 0;
         double xCoor = getX();
         firstPart = a * (xCoor * xCoor);
@@ -51,4 +61,44 @@ public class Standard {
         return firstPart + secondPart + thirdPart;
 
     }
+    public void say(){
+        System.out.println("The coordinates of the vertex are (" + getX() + ", " + getY() + ")");
+    }
+
+
+    public double returnY(double x){
+        double firstPart, secondPart, thirdPart;
+        double a;
+        if(equation.substring(0, 1).equals("x")){
+            a = 1;
+        }else {
+            a = Double.parseDouble(equation.substring(0, equation.indexOf("x")));
+        }
+        secondPart = 0;
+        double xCoor = x;
+        firstPart = a * (xCoor * xCoor);
+        double bValue;
+        String b = equation.substring(equation.indexOf("^"), equation.lastIndexOf("x"));
+        if(b.contains("+")){
+            bValue = Double.parseDouble(b.substring(b.indexOf("+") + 1));
+            secondPart = bValue * xCoor;
+        }
+        else if(b.contains("-")){
+            bValue = Double.parseDouble(b.substring(b.indexOf("-") + 1));
+            secondPart = bValue * xCoor;
+            secondPart *= -1;
+        }
+
+
+        thirdPart = Double.parseDouble(equation.substring(equation.lastIndexOf("x") + 2));
+        if(equation.substring(equation.lastIndexOf("x")).contains("-")){
+            thirdPart *= -1;
+        }
+
+        return firstPart + secondPart + thirdPart;
+
+
+    }
+
+
 }

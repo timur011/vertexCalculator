@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
-
-        Standard s1 = new Standard("1x^2-2x+3");
-        System.out.println(s1.getX());
-        System.out.println(s1.getY());
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Hello, what would you like to do? Vertex(enter 1), Standard, (enter 2)");
+        String choice = scan.nextLine();
+        if(choice.equals("1")){
 
 
 
